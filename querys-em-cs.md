@@ -2,8 +2,8 @@
 
 ## Banco_Conexao.cs
 
-Fazer no padrão PHP
-Conexão e provavel Reconexao
+- [x] Fazer no padrão PHP
+- Conexão e provavel Reconexao
 
 
 ## Classe_Cadastro.cs
