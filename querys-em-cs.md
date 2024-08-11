@@ -6,7 +6,7 @@
 - Conexão e provavel Reconexao
 
 
-## Classe_Cadastro.cs
+## Classe_Cadastro.cs - OK
 
 Metodo_Selecionar_Sala:
 "SELECT * FROM TB_SALA WHERE SALA_CODIGO='"+codigo+"';";

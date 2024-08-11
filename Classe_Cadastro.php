@@ -1,6 +1,6 @@
     <?php
 
-    require("database.php");
+    require("utils/database.php");
 
     // Endpoint para selecionar uma sala pelo código
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_sala') {
