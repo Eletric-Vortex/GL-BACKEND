@@ -49,7 +49,7 @@ conexao.Sql = "INSERT INTO TB_NIVEL_ATIVIDADE(COD_ESTUDANTE, COD_ATIVIDADE, NIVE
 
 
 
-## Classe_Login.cs
+## Classe_Login.cs - OK
 
 conexao.Sql = "SELECT * FROM TB_USER_ESTUDANTE WHERE USER_ESTUDANTE_LOGIN='"+txt_login.text+"' AND USER_ESTUDANTE_SENHA=md5('"+txt_senha.text+"');";
 

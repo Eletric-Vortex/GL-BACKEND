@@ -1,32 +1,66 @@
 <?php
 require 'utils/database.php';
 
-header('Content-Type: application/json');
 
-// Recebe os parâmetros via POST
-$login = $_POST['login'];
-$senha = md5($_POST['senha']);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_estudante') {
+    $codigo = $_GET['codigo'];
+    $senha = md5($_GET['senha']);
 
-// Função para executar a consulta e retornar os resultados
-function queryDatabase($conn, $table, $loginColumn, $login, $senha) {
-    $sql = "SELECT * FROM $table WHERE $loginColumn='$login' AND USER_SENHA='$senha'";
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_ESTUDANTE WHERE USER_ESTUDANTE_LOGIN = :codigo AND USER_ESTUDANTE_SENHA = :senha");
+    $stmt->bindParam(':codigo', $codigo);
+    $stmt->bindParam(':senha', $senha);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
 }
 
-// Executa as consultas para cada tabela
-$tables = array(
-    'TB_USER_ESTUDANTE' => 'USER_ESTUDANTE_LOGIN',
-    'TB_USER_PROFESSOR' => 'USER_PROFESSOR_LOGIN',
-    'TB_USER_MONITOR' => 'USER_MONITOR_LOGIN',
-    'TB_USER_ADM' => 'USER_ADM_LOGIN'
-);
 
-$results = array();
-foreach ($tables as $table => $loginColumn) {
-    $results[$table] = queryDatabase($conn, $table, $loginColumn, $login, $senha);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_professor') {
+    $codigo = $_GET['codigo'];
+    $senha = $_GET['senha'];
+
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_PROFESSOR WHERE USER_PROFESSOR_LOGIN = :codigo AND USER_PROFESSOR_SENHA = :senha");
+    $stmt->bindParam(':codigo', $codigo);
+    $stmt->bindParam(':senha', $senha);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
 }
 
-// Retorna os resultados em formato JSON
-echo json_encode($results);
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_monitor') {
+    $codigo = $_GET['codigo'];
+    $senha = md5($_GET['senha']);
+
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_MONITOR WHERE USER_MONITOR_LOGIN = :codigo AND USER_MONITOR_SENHA = :senha");
+    $stmt->bindParam(':codigo', $codigo);
+    $stmt->bindParam(':senha', $senha);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_adm') {
+    $codigo = $_GET['codigo'];
+    $senha = md5($_GET['senha']);
+
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_ADM WHERE USER_ADM_LOGIN = :codigo AND USER_ADM_SENHA = :senha");
+    $stmt->bindParam(':codigo', $codigo);
+    $stmt->bindParam(':senha', $senha);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
+
