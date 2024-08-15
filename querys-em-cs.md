@@ -1,14 +1,11 @@
 ## TEM EM TODAS AS CONSULTAS(CLASSES) - FAZER GLOBAL
 
 
-SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobalGLOBAL=
+SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=
     ALERT: O codigo da atividade é passado pelo cliente(Jogo)
 
 
-SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobal
-    ALERT: O codigo da atividade é passado pelo cliente(Jogo)
-
-
+UPDATE TB_NIVEL_ATIVIDADE SET NIVEL_ATIVIDADE=" + (n + 1) + " WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=
     
 
 
