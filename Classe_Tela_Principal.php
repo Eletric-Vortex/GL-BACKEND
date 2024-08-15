@@ -3,7 +3,7 @@
 require("utils/database.php");
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_nivel_atividade') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_nivel_atividade') {
     $codEstudante = $_GET['cod_estudante'];
     $codAtividade = $_GET['cod_atividade'];
 
@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
     $stmt->bindParam(':cod_atividade', $codAtividade);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //TODO: Melhorar este workaround para quando a atividade não tiver pontuação ainda
+    if ($result == 0 or $result == null or $result == '') {
+        echo json_encode(['status'=> 'empty','message'=> 'not exist']);
+    }
 
     header('Content-Type: application/json');
     echo json_encode($result);

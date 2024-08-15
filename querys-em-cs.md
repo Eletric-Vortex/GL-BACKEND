@@ -73,7 +73,7 @@ conexao.Sql = "SELECT * FROM TB_USER_ADM WHERE USER_ADM_LOGIN='"+txt_login.text+
 
 
 
-## Classe_Tela_Principal.cs
+## Classe_Tela_Principal.cs - OK
 
 connection.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=" + i;
 

@@ -3,7 +3,7 @@
     require("utils/database.php");
 
     // Endpoint para selecionar uma sala pelo código
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_sala') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_sala') {
         $codigo = $_GET['codigo'];
 
         $stmt = $conn->prepare("SELECT * FROM TB_SALA WHERE SALA_CODIGO = :codigo");
@@ -17,7 +17,9 @@
     }
 
     // Endpoint para validar informações do usuário (email e CPF)
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'validate_info') {
+    //TODO: Deveria retornar se existe ou não, alterar este comportamento posteriormente.
+    //TODO: Fazer retornar se o email, cpf ou login existe para o cliente.
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'validate_info') {
         $email = $_GET['email'];
         $cpf = $_GET['cpf'];
 
@@ -33,7 +35,8 @@
     }
 
     // Endpoint para validar o login do player
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'validate_player') {
+    // TODO: Fazer os dois enpoints (O de cima e esse) virar apenas um, pois os dois verificam informações do mesmo contexto e isso economiza codigo e processamento das partes.
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'validate_player') {
         $login = $_GET['login'];
 
         $stmt = $conn->prepare("SELECT USER_ESTUDANTE_CPF FROM TB_USER_ESTUDANTE WHERE USER_ESTUDANTE_LOGIN = :login");
@@ -47,7 +50,7 @@
     }
 
     // Endpoint para inserir um novo player
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'insert_player') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['endpoint']) && $_POST['endpoint'] === 'insert_player') {
         $player = json_decode(file_get_contents('php://input'), true);
 
         $stmt = $conn->prepare("INSERT INTO TB_USER_ESTUDANTE (USER_ESTUDANTE_CPF, USER_ESTUDANTE_NOME, USER_ESTUDANTE_LOGIN, USER_ESTUDANTE_SENHA, USER_ESTUDANTE_EMAIL, USER_ESTUDANTE_NIVEL, USER_ESTUDANTE_PTOTAIS, USER_ESTUDANTE_PSEMESTRE, USER_ESTUDANTE_PATUAIS, USER_ESTUDANTE_PELE, USER_ESTUDANTE_ROUPA, USER_ESTUDANTE_CABELO, USER_ESTUDANTE_ACESSORIO) VALUES (:cpf, :nome, :login, MD5(:senha), :email, :nivel, :ptotais, :psemestre, :patuais, :pele, :roupa, :cabelo, :acessorio)");
@@ -72,7 +75,7 @@
     }
 
     // Endpoint para selecionar todas as atividades
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_atividades') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_atividades') {
         $stmt = $conn->prepare("SELECT ATIVIDADE_ID FROM TB_ATIVIDADES");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -83,7 +86,7 @@
     }
 
     // Endpoint para inserir nível de atividade
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'insert_nivel_atividade') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['endpoint']) && $_POST['endpoint'] === 'insert_nivel_atividade') {
         $data = json_decode(file_get_contents('php://input'), true);
 
         $cpf = $data['cpf'];
