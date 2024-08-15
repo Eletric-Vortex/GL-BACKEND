@@ -2,13 +2,13 @@
 require 'utils/database.php';
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_estudante') {
-    $codigo = $_GET['codigo'];
-    $senha = md5($_GET['senha']);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'student_login') {
+    $login = $_GET['login'];
+    $password = md5($_GET['password']);
 
-    $stmt = $conn->prepare("SELECT * FROM TB_USER_ESTUDANTE WHERE USER_ESTUDANTE_LOGIN = :codigo AND USER_ESTUDANTE_SENHA = :senha");
-    $stmt->bindParam(':codigo', $codigo);
-    $stmt->bindParam(':senha', $senha);
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_ESTUDANTE WHERE USER_ESTUDANTE_LOGIN = :login AND USER_ESTUDANTE_password = :password");
+    $stmt->bindParam(':login', $login);
+    $stmt->bindParam(':password', $password);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_professor') {
-    $codigo = $_GET['codigo'];
-    $senha = $_GET['senha'];
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'teacher_login') {
+    $login = $_GET['login'];
+    $password = $_GET['password'];
 
-    $stmt = $conn->prepare("SELECT * FROM TB_USER_PROFESSOR WHERE USER_PROFESSOR_LOGIN = :codigo AND USER_PROFESSOR_SENHA = :senha");
-    $stmt->bindParam(':codigo', $codigo);
-    $stmt->bindParam(':senha', $senha);
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_PROFESSOR WHERE USER_PROFESSOR_LOGIN = :login AND USER_PROFESSOR_password = :password");
+    $stmt->bindParam(':login', $login);
+    $stmt->bindParam(':password', $password);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_monitor') {
-    $codigo = $_GET['codigo'];
-    $senha = md5($_GET['senha']);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'monitor_login') {
+    $login = $_GET['login'];
+    $password = md5($_GET['password']);
 
-    $stmt = $conn->prepare("SELECT * FROM TB_USER_MONITOR WHERE USER_MONITOR_LOGIN = :codigo AND USER_MONITOR_SENHA = :senha");
-    $stmt->bindParam(':codigo', $codigo);
-    $stmt->bindParam(':senha', $senha);
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_MONITOR WHERE USER_MONITOR_LOGIN = :login AND USER_MONITOR_password = :password");
+    $stmt->bindParam(':login', $login);
+    $stmt->bindParam(':password', $password);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -49,13 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_adm') {
-    $codigo = $_GET['codigo'];
-    $senha = md5($_GET['senha']);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'adm_login') {
+    $login = $_GET['login'];
+    $password = md5($_GET['password']);
 
-    $stmt = $conn->prepare("SELECT * FROM TB_USER_ADM WHERE USER_ADM_LOGIN = :codigo AND USER_ADM_SENHA = :senha");
-    $stmt->bindParam(':codigo', $codigo);
-    $stmt->bindParam(':senha', $senha);
+    $stmt = $conn->prepare("SELECT * FROM TB_USER_ADM WHERE USER_ADM_LOGIN = :login AND USER_ADM_password = :password");
+    $stmt->bindParam(':login', $login);
+    $stmt->bindParam(':password', $password);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

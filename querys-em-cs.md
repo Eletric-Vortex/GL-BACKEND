@@ -1,7 +1,7 @@
 ## TEM EM TODAS AS CONSULTAS(CLASSES) - FAZER GLOBAL
 
 
-UPDATE TB_NIVEL_ATIVIDADE SET NIVEL_ATIVIDADE=" + (n + 1) + " WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE
+UPDATE TB_NIVEL_ATIVIDADE SET NIVEL_ATIVIDADE=" + (n + 1) + " WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=
     ALERT: O codigo da atividade é passado pelo cliente(Jogo)
 
 
@@ -19,7 +19,7 @@ SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cp
 
 ## Classe_Cadastro.cs - OK
 
-Metodo_Selecionar_Sala:
+Metodo_Selecionar_Sala: 
 "SELECT * FROM TB_SALA WHERE SALA_CODIGO='"+codigo+"';";
 
 
