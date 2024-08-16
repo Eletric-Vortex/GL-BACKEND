@@ -1,5 +1,5 @@
 ## TEM EM TODAS AS CONSULTAS(CLASSES) - FAZER GLOBAL
-
+TODO: Fazendo
 
 SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=
     ALERT: O codigo da atividade é passado pelo cliente(Jogo)
@@ -99,12 +99,6 @@ conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1, CONTEUDO_TAG2 FROM TB_CONTE
 ## Classe_Controle_Licao3_Atv1.cs  - EXCLUIDO DEVIDO USAR APENAS CONSULTAS GLOBAIS
 
 
-conexao.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobal3";
-
-conexao.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobal3";
-
-conexao.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobalGLOBAL=3";
-
 
 
 ## Classe_Controle_Licao4_Atv1.cs - EXCLUIDO DEVIDO USAR APENAS CONSULTAS GLOBAIS
@@ -131,7 +125,6 @@ connection.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE C
 
 ## Classe_Controle_Licao8_Atv1.cs
 
-connection.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobal8";
 
 connection.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND (CONTEUDO_TAG1 = 'Masculino' OR CONTEUDO_TAG1 = 'Feminino');";
 

@@ -2,6 +2,12 @@
 
 require("/opt/lampp/htdocs/GL-BACKEND/utils/database.php");
 
+// conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND (CONTEUDO_TAG1 = 'Masculino' OR CONTEUDO_TAG1 = 'Feminino');";
+
+// conexao.Sql = "SELECT CONTEUDO_TEXTO FROM
+//  TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Sobrenome';";
+
+// conexao.Sql = "SELECT CONTEUDO_TEXTO FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nacionalidade';";
 
 
 try {
