@@ -1,17 +1,28 @@
 <?php
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_content_names') {
+
+
+    $stmt = $conn->prepare("SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND (CONTEUDO_TAG1 = 'Masculino' OR CONTEUDO_TAG1 = 'Feminino')");
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result === false) {
+        throw new Exception("Nenhum resultado encontrado");
+    }
+
+    header('Content-Type: application/json');
+
+    echo json_encode($result);
+    exit();
+}
+
 require("/opt/lampp/htdocs/GL-BACKEND/utils/database.php");
-
-// conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND (CONTEUDO_TAG1 = 'Masculino' OR CONTEUDO_TAG1 = 'Feminino');";
-
-// conexao.Sql = "SELECT CONTEUDO_TEXTO FROM
-//  TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Sobrenome';";
-
-// conexao.Sql = "SELECT CONTEUDO_TEXTO FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nacionalidade';";
 
 
 try {
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_conteudos_sobrenome') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_content_last_name') {
         // Ative o relatório de erros do PDO
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -47,4 +58,21 @@ try {
     echo json_encode(['status' => 'error', 'message' => 'Erro: ' . $e->getMessage()]);
     exit();
 }
-?>
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_content_nationality') {
+
+
+    $stmt = $conn->prepare("SELECT CONTEUDO_TEXTO FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nacionalidade'");
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result === false) {
+        throw new Exception("Nenhum resultado encontrado");
+    }
+
+    header('Content-Type: application/json');
+
+    echo json_encode($result);
+    exit();
+}
+
