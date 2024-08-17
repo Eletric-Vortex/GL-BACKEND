@@ -5,11 +5,11 @@ SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cp
     ALERT: O codigo da atividade é passado pelo cliente(Jogo)
 
 
-UPDATE TB_NIVEL_ATIVIDADE SET NIVEL_ATIVIDADE=" + (n + 1) + " WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=
+UPDATE TB_NIVEL_ATIVIDADE SET NIVEL_ATIVIDADE=" + (n + 1) + " WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=1
     
 
 
-## Banco_Conexao.cs
+## Banco_Conexao.cs - OK
 
 - [x] Fazer no padrão PHP
 
@@ -76,7 +76,7 @@ connection.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUD
 
 
 
-## Classe_Controle_Licao1_Atv1.cs
+## Classe_Controle_Licao1_Atv1.cs -OK
 
 conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND (CONTEUDO_TAG1 = 'Masculino' OR CONTEUDO_TAG1 = 'Feminino');";
 
@@ -86,7 +86,7 @@ conexao.Sql = "SELECT CONTEUDO_TEXTO FROM
 conexao.Sql = "SELECT CONTEUDO_TEXTO FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nacionalidade';";
 
 
-## Classe_Controle_Licao2_Atv1.cs
+## Classe_Controle_Licao2_Atv1.cs - OK
 
 
 conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG2 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND CONTEUDO_TAG1 = 'Empresa';";
@@ -98,12 +98,7 @@ conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1, CONTEUDO_TAG2 FROM TB_CONTE
 
 ## Classe_Controle_Licao3_Atv1.cs  - EXCLUIDO DEVIDO USAR APENAS CONSULTAS GLOBAIS
 
-
-
-
 ## Classe_Controle_Licao4_Atv1.cs - EXCLUIDO DEVIDO USAR APENAS CONSULTAS GLOBAIS
-
-
 
 ## Classe_Controle_Licao5_Atv1.cs
 
@@ -113,9 +108,8 @@ conexao.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TIPO, CONTEUDO_TAG2, CONTEUDO_TAG
 
 ## Classe_Controle_Licao6_Atv1.cs - EXCLUIDO DEVIDO USAR APENAS CONSULTAS GLOBAIS
 
-## Classe_Controle_Licao7_Atv1.cs
+## Classe_Controle_Licao7_Atv1.cs - MEIO OK
 
-connection.Sql = "SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE=" + player.Cpf + " AND COD_ATIVIDADE=globalglobalglobalglobalglobalglobal7";
 
 connection.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Lugar' AND CONTEUDO_TAG1 = 'Lição 7 Atividade 1';";
 
@@ -123,7 +117,7 @@ connection.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE C
 
 
 
-## Classe_Controle_Licao8_Atv1.cs
+## Classe_Controle_Licao8_Atv1.cs - MEI OK
 
 
 connection.Sql = "SELECT CONTEUDO_TEXTO, CONTEUDO_TAG1 FROM TB_CONTEUDOS WHERE CONTEUDO_TIPO = 'Nome' AND (CONTEUDO_TAG1 = 'Masculino' OR CONTEUDO_TAG1 = 'Feminino');";

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-require"/opt/lampp/htdocs/GL-BACKEND/utils/database.php";
+require "/opt/lampp/htdocs/GL-BACKEND/utils/database.php";
 
 
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['e
 
     //TODO: Melhorar este workaround para quando a atividade não tiver pontuação ainda
     if ($result == 0 or $result == null or $result == '') {
-        echo json_encode(['status'=> 'empty','message'=> 'not exist']);
+        echo json_encode(['status' => 'empty', 'message' => 'not exist']);
     }
 
 
@@ -35,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['endpoint']) && $_POST
     $cod_activity = $_POST['cod_activity'];
 
     try {
-        $stmt = $conn->prepare("UPDATE TB_NIVEL_ATIVIDADE SET NIVEL_ATIVIDADE = NIVEL_ATIVIDADE + 1 WHERE COD_ESTUDANTE = :CPF AND COD_ATIVIDADE = :cod_activity");
+        $stmt = $conn->prepare("UPDATE TB_NIVEL_ATIVIDADE
+SET NIVEL_ATIVIDADE = IFNULL(NIVEL_ATIVIDADE, 0) + 1
+WHERE COD_ESTUDANTE = :CPF AND COD_ATIVIDADE = :cod_activity;");
 
         $stmt->bindParam(':CPF', $CPF);
         $stmt->bindParam(':cod_activity', $cod_activity);
@@ -48,8 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['endpoint']) && $_POST
         } else {
             $result = ['status' => 'error', 'message' => 'Nenhum registro atualizado'];
         }
-
-
     } catch (PDOException $e) {
         $result = ['status' => 'error', 'message' => 'Erro ao executar a atualização: ' . $e->getMessage()];
     }

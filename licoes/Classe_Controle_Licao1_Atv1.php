@@ -1,5 +1,6 @@
 <?php
 
+require("/opt/lampp/htdocs/GL-BACKEND/utils/database.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_content_names') {
 
@@ -18,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['e
     exit();
 }
 
-require("/opt/lampp/htdocs/GL-BACKEND/utils/database.php");
 
 
 try {
