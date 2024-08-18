@@ -2,9 +2,29 @@
 
 require "utils/database.php";
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'select_nivel_activity') {
+    $cpf = $_GET['cpf'];
+    $cod_activity = $_GET['cod_activity'];
+
+    $stmt = $conn->prepare("SELECT NIVEL_ATIVIDADE FROM TB_NIVEL_ATIVIDADE WHERE COD_ESTUDANTE = :cpf AND COD_ATIVIDADE = :cod_activity");
+    $stmt->bindParam(':cpf', $cpf);
+    $stmt->bindParam(':cod_activity', $cod_activity);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //TODO: Melhorar este workaround para quando a atividade não tiver pontuação ainda
+    if ($result == 0 or $result == null or $result == '') {
+        echo json_encode(['status' => 'empty', 'message' => 'not exist']);
+    }
+
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
+
 if (
-    ($_SERVER['REQUEST_METHOD'] === 'POST') &&
-    isset($_REQUEST['endpoint']) && $_REQUEST['endpoint'] === 'teste'
+    ($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_REQUEST['endpoint']) && $_REQUEST['endpoint'] === 'increment_level'
 ) {
     // Verifica se os parâmetros necessários estão presentes
     $missingParams = [];
