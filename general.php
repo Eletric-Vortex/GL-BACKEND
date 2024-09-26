@@ -1,5 +1,7 @@
 <?php
 
+// A MAIORIAS DOS SCRIPTS NO JOGO UTILIZAM ESSAS QUERYS
+
 require "utils/database.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'select_nivel_activity') {

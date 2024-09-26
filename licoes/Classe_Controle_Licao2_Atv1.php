@@ -1,17 +1,7 @@
 <?php
 
-require("/opt/lampp/htdocs/GL-BACKEND/utils/database.php");
-
-// Função para executar a consulta e retornar os resultados
-function fetchData($conn, $sql) {
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    if ($result === false || empty($result)) {
-        throw new Exception("Nenhum resultado encontrado");
-    }
-    return $result;
-}
+require "/opt/lampp/htdocs/GL-BACKEND/utils/database.php";
+require_once "/opt/lampp/htdocs/GL-BACKEND/utils/global.php";
 
 // TEMPLATE TEMPORARIO
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_licao2_info') {

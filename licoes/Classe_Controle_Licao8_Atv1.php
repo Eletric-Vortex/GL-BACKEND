@@ -3,17 +3,9 @@
 //ESTA LICAO ESTA INCOMPLETA TAMBEM
 
 require("/opt/lampp/htdocs/GL-BACKEND/utils/database.php");
+require_once "/opt/lampp/htdocs/GL-BACKEND/utils/global.php";
 
-// Função para executar a consulta e retornar os resultados
-function fetchData($conn, $sql) {
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // if ($result === false || empty($result)) {
-    //     throw new Exception("Nenhum resultado encontrado");
-    // }
-    return $result;
-}
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['endpoint']) && $_GET['endpoint'] === 'get_licao8_info') {
